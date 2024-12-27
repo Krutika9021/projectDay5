@@ -1,0 +1,25 @@
+pipeline
+{
+    agent any
+    stages
+    {
+        stage('Clone')
+        {
+            steps{
+                git 'https://github.com/Krutika9021/ProjectDay3.git'
+            }
+        }
+        stage('Build')
+        {
+            steps{
+                sh 'echo "Building project...."'
+            }
+        }
+        stage('Test')
+        {
+            steps{
+                sh 'python3 -m unittest discover -s ./ -p "test_*.py"'
+            }
+        }
+    }
+}
